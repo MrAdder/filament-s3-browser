@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/MrAdder/filament-s3-browser/compare/v0.1.3...v0.1.4) (2026-03-14)
+
+
+### Miscellaneous Chores
+
+* CI Slimming ([2d5a5e7](https://github.com/MrAdder/filament-s3-browser/commit/2d5a5e74a11134f118be9ca037a3edab191a1d4a))
+
 ## [0.1.3](https://github.com/MrAdder/filament-s3-browser/compare/v0.1.2...v0.1.3) (2026-03-14)
 
 
