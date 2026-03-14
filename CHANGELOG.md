@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/MrAdder/filament-s3-browser/compare/mradder/filament-s3-browser-v1.0.0...mradder/filament-s3-browser-v1.0.1) (2026-03-14)
+
+
+### Miscellaneous Chores
+
+* CI fixes ([0f90cdf](https://github.com/MrAdder/filament-s3-browser/commit/0f90cdf9a07e2a2335e155d7240ec5aa6d087453))
+* Further Fixes ([3173d5b](https://github.com/MrAdder/filament-s3-browser/commit/3173d5bb4b11c8aaf6461d4b5372aec34aa66d6b))
+
 ## 1.0.0 (2026-03-14)
 
 
