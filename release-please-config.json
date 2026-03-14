@@ -3,11 +3,11 @@
     "bump-minor-pre-major": true,
     "bump-patch-for-minor-pre-major": true,
     "include-v-in-tag": true,
+    "include-component-in-tag": false,
     "initial-version": "0.1.0",
     "packages": {
         ".": {
             "release-type": "php",
-            "package-name": "mradder/filament-s3-browser",
             "changelog-path": "CHANGELOG.md"
         }
     }
