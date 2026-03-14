@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_call:
+    secrets:
+      PACKAGIST_USERNAME:
+        required: false
+      PACKAGIST_TOKEN:
+        required: false
   workflow_dispatch:
 
 permissions:
@@ -40,11 +45,23 @@ jobs:
   notify-packagist:
     name: Notify Packagist
     needs: verify
-    if: ${{ secrets.PACKAGIST_USERNAME != '' && secrets.PACKAGIST_TOKEN != '' }}
     runs-on: ubuntu-latest
 
     steps:
+      - name: Detect Packagist credentials
+        id: packagist
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+        run: |
+          if [ -n "${PACKAGIST_USERNAME}" ] && [ -n "${PACKAGIST_TOKEN}" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Trigger package update
+        if: ${{ steps.packagist.outputs.enabled == 'true' }}
         run: |
           curl --fail-with-body --request POST \
             --url "https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_TOKEN}" \
@@ -53,3 +70,7 @@ jobs:
         env:
           PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+
+      - name: Skip Packagist notification
+        if: ${{ steps.packagist.outputs.enabled != 'true' }}
+        run: echo "Packagist credentials are not configured. Skipping package update notification."
