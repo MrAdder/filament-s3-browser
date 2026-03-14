@@ -1,0 +1,69 @@
+{
+    "name": "mradder/filament-s3-browser",
+    "description": "Browse and manage S3 buckets directly inside your Filament admin panel.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "filament",
+        "filesystem",
+        "laravel",
+        "livewire",
+        "s3"
+    ],
+    "homepage": "https://github.com/mradder/filament-s3-browser",
+    "support": {
+        "issues": "https://github.com/mradder/filament-s3-browser/issues",
+        "source": "https://github.com/mradder/filament-s3-browser"
+    },
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^4.0",
+        "illuminate/auth": "^11.0|^12.0",
+        "illuminate/contracts": "^11.0|^12.0",
+        "illuminate/filesystem": "^11.0|^12.0",
+        "illuminate/http": "^11.0|^12.0",
+        "illuminate/routing": "^11.0|^12.0",
+        "illuminate/support": "^11.0|^12.0",
+        "spatie/laravel-package-tools": "^1.19"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.18",
+        "nunomaduro/collision": "^8.0",
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "phpstan/phpstan": "^2.1.32"
+    },
+    "autoload": {
+        "psr-4": {
+            "MrAdder\\FilamentS3Browser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MrAdder\\FilamentS3Browser\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint",
+        "test": "vendor/bin/pest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MrAdder\\FilamentS3Browser\\FilamentS3BrowserServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

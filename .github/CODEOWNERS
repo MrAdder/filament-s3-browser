@@ -1,0 +1,5 @@
+# Default owners for this repository.
+* @mradder
+
+# Keep automation and community files reviewed by the maintainer.
+/.github/ @mradder

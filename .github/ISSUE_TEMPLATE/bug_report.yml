@@ -1,0 +1,85 @@
+name: Bug report
+description: Report a reproducible problem with Filament S3 Browser.
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+        Please include enough detail for us to reproduce the problem on a clean Laravel application when possible.
+
+  - type: input
+    id: package_version
+    attributes:
+      label: Package version
+      description: The installed version of mradder/filament-s3-browser.
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: php_version
+    attributes:
+      label: PHP version
+      placeholder: 8.3.7
+    validations:
+      required: true
+
+  - type: input
+    id: laravel_version
+    attributes:
+      label: Laravel version
+      placeholder: 11.x or 12.x
+    validations:
+      required: true
+
+  - type: input
+    id: filament_version
+    attributes:
+      label: Filament version
+      placeholder: 4.x
+    validations:
+      required: true
+
+  - type: input
+    id: disk_driver
+    attributes:
+      label: Filesystem disk driver
+      description: For example s3, scoped, local, minio, r2, or spaces.
+      placeholder: s3
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the smallest set of steps that reproduces the bug.
+      placeholder: |
+        1. Configure the package with...
+        2. Open the Filament browser page...
+        3. Click...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs, screenshots, or stack traces
+      render: shell

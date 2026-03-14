@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: composer:v2
+          extensions: mbstring, dom, fileinfo, intl
+          cache: composer
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer update --prefer-dist --prefer-stable --no-interaction --no-progress
+
+      - name: Run release checks
+        run: |
+          vendor/bin/pint --test
+          vendor/bin/phpstan analyse --no-progress
+          vendor/bin/pest --colors=always
+
+  notify-packagist:
+    name: Notify Packagist
+    needs: verify
+    if: ${{ secrets.PACKAGIST_USERNAME != '' && secrets.PACKAGIST_TOKEN != '' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger package update
+        run: |
+          curl --fail-with-body --request POST \
+            --url "https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_TOKEN}" \
+            --header "content-type: application/json" \
+            --data '{"repository":{"url":"https://github.com/mradder/filament-s3-browser"}}'
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
