@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/MrAdder/filament-s3-browser/compare/v0.1.4...v0.1.5) (2026-04-27)
+
+
+### Miscellaneous Chores
+
+* **ci:** bump googleapis/release-please-action from 4 to 5 ([#13](https://github.com/MrAdder/filament-s3-browser/issues/13)) ([190b3e3](https://github.com/MrAdder/filament-s3-browser/commit/190b3e32473211d267c766e9107be121649e14ff))
+
 ## [0.1.4](https://github.com/MrAdder/filament-s3-browser/compare/v0.1.3...v0.1.4) (2026-03-14)
 
 
